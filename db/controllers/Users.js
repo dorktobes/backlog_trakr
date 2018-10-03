@@ -1,3 +1,4 @@
+require('dotenv').config();
 const connection = require('../index.js');
 
 module.exports.create = user => (
@@ -37,13 +38,13 @@ module.exports.create = user => (
 module.exports.findById = id => (
   new Promise((resolve, reject) => {
     const query = `
-    SELECT (
+    SELECT
       username,
       psn,
       gamertag,
       switch_id,
       twitter
-      ) FROM users WHERE id = ?`;
+       FROM users WHERE id = ?`;
     connection.query(query, [id], (err, rows) => {
       if (err) {
         reject(err);

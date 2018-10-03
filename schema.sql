@@ -3,7 +3,7 @@ CREATE DATABASE backlog_trakr;
 USE backlog_trakr;
 
 CREATE TABLE users (
-  id VARCHAR(20) PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT ,
   username VARCHAR(30) UNIQUE NOT NULL,
   email VARCHAR(120) NOT NULL,
   password VARCHAR(32) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE sessions (
-  user_id VARCHAR(20) NOT NULL,
+  user_id INT NOT NULL,
   token VARCHAR(32) UNIQUE NOT NULL,
   FOREIGN KEY (user_id)
     REFERENCES users(id)
@@ -31,7 +31,7 @@ CREATE TABLE games (
 );
 
 CREATE TABLE user_games (
-  user_id VARCHAR(20) NOT NULL,
+  user_id INT NOT NULL,
   game_id VARCHAR(20) NOT NULL,
   position INT NOT NULL,
   FOREIGN KEY (user_id)
